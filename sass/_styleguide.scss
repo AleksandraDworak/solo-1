@@ -1,0 +1,44 @@
+h1{
+
+}
+
+h2{
+
+}
+
+h3{
+	text-transform: uppercase;
+}
+h4{
+	display: inline;
+}
+h5{
+
+}
+h6{
+
+}
+p{
+	font-size:15px;
+	display: inline;
+}
+a{
+	text-decoration: none;
+}
+ul{
+	padding:0;
+}
+li{
+	font-size: 12px;
+	list-style-type: none;
+	padding:0;
+}
+div{
+	}
+
+
+h1, h2, h3, h4, h5, h6, p {
+	color:$text-color;
+	padding:15px;
+	margin:0;
+}

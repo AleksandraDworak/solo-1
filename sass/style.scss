@@ -4,136 +4,72 @@
 @import "layout";
 @import "styleguide";
 
+/*GENERAL*/
 * {
   box-sizing: border-box;
-  font-family: $brand-font;
-  
+  font-family: $brand-font;  
 }
 body{
 	background-color: $main-background-color;
 }
-
-.sidebar{
-	position: fixed;
-	top:60px;
-	height: 100%;
-	background-color:$sidebar-color;
-	color: $sidebar-font-color;
-	width: 16.6%;
-	@include sm {
-		display: none;
-	}
-
-
+.button-section{
+	background-color: $button-color;
+	border-radius:2px;
+	border:none;
+	color:#ffffff;
+	margin:20px;
+	padding:10px;
 }
-
+.button-section:hover{
+	background-color:$button-hover-color;
+}
 .container {
-	
- 	width: 95%;
- 	position:relative;
- 	top:85px;
- 	z-index: -1;
- 	margin: auto;	
-	padding:15px;
-	box-shadow: 2px 5px 8px #888888;
-	padding:0;
-	padding-bottom:20px;
 	background-color:$section-background-color;
+	box-shadow: 2px 5px 8px #888888;
+ 	margin: auto;	
+	padding:15px 15px 20px 15px;
+	position:relative;
+	top:85px;
+	width: 95%;
+ 	z-index: -1;
+	
 	@include sm{
 		width: 100%;
 	}
 }
-
-.date-inputs{
-	text-align: center;
-	@include sm{
-		input{
-		display: block;
-		margin:20px auto;
-
-	}	
-	}
-}
-
 .container-fluid {
   width: 100%;
 }
-
-.statistic{
-	.statistic-table{
-		width: 60%;
-		margin:50px auto;
-		
-		th, td {  
-	  		border-bottom: 1px solid #ddd;
-	  		height: 50px;
-		}	
-		.empty-col{
-			width: 50px;
-			border-bottom:none;
-		}
-	}
-
-	img{
-		max-width: 60%;
-		margin:auto;
-
-		@include sm {
-			width: 100%;
-		}
-
-	}
-
+.icon-sidebar, .button-icon{
+	align-items:center;
+	display: inline-block;
+	fill:$sidebar-font-color;
+	height: 15px;
+	width: 15px;
 }
-
-
+.hr{
+	border-bottom:1px $text-color-light solid;
+	width: 100%;
+}
 .row {
   display: flex;
   flex-wrap: wrap;
 }
-
-
-header{
-
-	position:fixed;
-	margin-bottom: 2%;
-	height: 60px;
-	width: 100%;
-	max-width: 1400px;
-	text-align: right;
-	background-color:$section-background-color;
-	div{
-		display: inline;
-		line-height: 45px;
-		text-align: center;
-	}	
+.sidebar .hr{
+	border-bottom-color: #333333;
 }
 
-.button-header{
-  background-color: $section-background-color;
-  border:none;
-  border-left:1px $text-color-light solid;
-  color: $text-color;
-  padding: 10px;
-  text-decoration: none;
-  display: inline-block;
-  height: 100%;
-  line-height: 100%;
-  text-align: center;
-  min-width: 60px;  
-}
-.icon-header{
-	width: 20px;
-	height: 20px;
-	fill:$text-color;
-	display: inline;
-	margin-left:5px;
-}
-.nav{
-	background-color:$sidebar-color;
+/*SIDEBAR*/
+.icon-sidebar{
 	float: left;
-	height: 60px;
-	min-width: 16.6%;
+	margin:10px;
+	z-index: 1;
+}
+.manager-photo{
+	border-radius:50%;
+	display: inline;
+	height: 40px;
+	width: 40px;
 }
 .nav-button{
 	background-color:$sidebar-color;
@@ -146,111 +82,143 @@ header{
 	width: 100%;
 	vertical-align: middle;
 }
-
-.dropdown-button{
-	background-color:inherit;
-	color: inherit;
-	border:none;
+.sidebar{
+	background-color:$sidebar-color;
+	color: $sidebar-font-color;
+	height: 100%;
+	position: fixed;
+	top:60px;
+	width: 16.6%;
+	@include sm {
+		display: none;
+	}
 }
 
-.logo{
-	max-width: 100px;
-	max-height: 30px;
-	margin:15px 5px 0 10px;
-	display: inline;
-}
-
-.nav-button:hover{
-	border-left:6px solid $button-hover-color;
-	color:$sidebar-text-hover-color;
-	background-color:$sidebar-hover-color;
-
-.icon-sidebar{
-	fill:$sidebar-text-hover-color;
-}
+/*NAVBAR*/
+header{
+	background-color:$section-background-color;
+	height: 60px;
+	margin-bottom: 2%;
+	max-width: 1400px;
+	position:fixed;
+	text-align: right;
+	width: 100%;
+	.nav{
+		display: inline;
+		line-height: 45px;
+		text-align: center;
 	}
 
-		
-
-.manager-photo{
-	border-radius:50%;
+	@include sm {
+		.navbar-xl{
+			display:none;
+		}
+	}
+	@include xl{
+		.dropdown-button{
+			visibility: hidden;
+		}
+	}
+}
+.arrow-down{
+	height: 15px;
+	width: 15px;
+}
+.button-header{
+  background-color: $section-background-color;
+  border:none;
+  border-left:1px $text-color-light solid;
+  color: $text-color;
+  display: inline-block;
+  height: 100%;
+  line-height: 40px;
+  min-width: 60px; 
+  padding: 10px;
+  text-decoration: none;  
+  text-align: center;
+}
+.dropdown-button{
+	background-color:inherit;
+	border:none;
+	color: inherit;
+}
+.icon-header{
 	display: inline;
-	height: 40px;
-	width: 40px;
+	fill:$text-color;
+	height: 20px;
+	width: 20px;
 }
-
-
-
-.icon-sidebar, .button-icon{
-		width: 15px;
-		height: 15px;
-		fill:$sidebar-font-color;
-		display: inline-block;
-		align-items:center;
+.logo{
+	display: inline;
+	margin:15px 5px 0 10px;
+	max-width: 100px;
+	max-height: 30px;
 }
-
-.icon-sidebar{
+.nav{
+	background-color:$sidebar-color;
 	float: left;
+	height: 60px;
+	min-width: 16.6%;
+}
+.nav-button:hover{
+	border-left:6px solid $button-hover-color;
+	background-color:$sidebar-hover-color;
+	color:$sidebar-text-hover-color;
+	.icon-sidebar{
+		fill:$sidebar-text-hover-color;
+	}
+}
+.wallet-status{
+	display: inline;
+	font-weight: bold;
+	font-size: 18px;
+	line-height: 40px;
 	margin:10px;
-	z-index: 1;
+	text-align: center;
 }
 
+/*STATISTIC*/
 .button-icon{
 	fill:#ffffff;
 }
-
-.wallet-status{
-	font-weight: bold;
-	font-size: 18px;
-	margin:20px;
+.date-inputs{
+	text-align: center;
+	@include sm{
+		input{
+		display: block;
+		margin:20px auto;
+		}	
+	}
+}
+.statistic{
+	.statistic-table{
+		margin:50px auto;
+		width: 60%;
+		th, td {  
+	  		border-bottom: 1px solid #ddd;
+	  		height: 50px;
+		}	
+		.empty-col{
+			border-bottom:none;
+			width: 50px;
+		}
+	}
+	img{
+		max-width: 60%;
+		margin:auto;
+		@include sm {
+			width: 100%;
+		}
+	}
 }
 
-
-.hr{
-	width: 100%;
-	border-bottom:1px $text-color-light solid;
-}
-
-
-.sidebar .hr{
-	border-bottom-color: #333333;
-}
-
-.arrow-down{
-	width: 15px;
-	height: 15px;
-}
-
-
-
-
-
-
-.button-section{
-	background-color: $button-color;
-	border-radius:2px;
-	border:none;
-	padding:10px;
-	color:#ffffff;
-	margin:20px;
-	
-}
-
-.button-section:hover{
-	background-color:$button-hover-color;
-}
-
-
+/*LINKS*/
 .add-new-link{
-	
 	display: block;
 	margin: auto;
 	margin-top: 30px;
 	width: 120px;
 }
-
-
-
 .links-table{
 	margin:auto;
 	p{
@@ -258,77 +226,57 @@ header{
 	}
 	@include xl{
 		width: 60%;
-		
-
 		.table-icon{
 			visibility: hidden;
 		}
 	}
-
 	@include lg {
 		width: 80%;
 	}
-
 	@include md{
 		width: 80%;
 	}
-
 	@include sm{
 		width: 100%;
 	}
 	.trash{
 		fill:$text-color;
-		margin-left: 20px;
-		margin-right: 20px;
-		width: 20px;
 		height: 20px;
+		margin: 0 20px;
+		width: 20px;
 		@include xl{
-			margin-left: 15px;
-			margin-right: 15px;
+			height: 15px;
+			margin:0 15px;
 			width: 15px;
-			height: 15px;}
-
-
-
-		
+			}	
 	}
-
 	.link{
 		fill:$button-color;
+		height: 20px;
 		margin-left: 20px;
 		width: 20px;
-		height: 20px;
 		@include xl{
+		height: 15px;	
 		margin-left: 15px;
 		width: 15px;
-		height: 15px;
 		}
 	}
-
 	.column-3{
+		width: 110px;
 		@include xl{
 		width: 90px;
-	}
-		width: 110px;
-
-
+		}	
 	}
 	th, td {
-  
   		border-bottom: 1px solid #ddd;
   		height: 50px;
   	}
-
   	@include xl{
-  	tr:hover {
-		background-color: $hover-color;
-
-		.table-icon{
-			visibility: visible;
+	  	tr:hover {
+			background-color: $hover-color;
+			.table-icon{
+				visibility: visible;
+			}
 		}
-
-	}}
-
-
-
+	}
 }

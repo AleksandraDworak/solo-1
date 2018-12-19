@@ -32,7 +32,7 @@ body{
 	top:85px;
 	width: 95%;
  	z-index: -1;
-	
+ 		
 	@include sm{
 		width: 100%;
 	}
@@ -60,18 +60,21 @@ body{
 }
 
 /*SIDEBAR*/
-.icon-sidebar{
-	float: left;
-	margin:10px;
-	z-index: 1;
-}
-.manager-photo{
-	border-radius:50%;
-	display: inline;
-	height: 40px;
-	width: 40px;
-}
-.nav-button{
+.sidebar{
+@include sm {
+		display: none;
+	}}
+	
+	
+.sidebar, .sidebar-sm{
+	background-color:$sidebar-color;
+	color: $sidebar-font-color;
+	height: 100%;
+	position: fixed;
+	top:60px;
+	width: 16.6%;
+	
+	.nav-button{
 	background-color:$sidebar-color;
 	border:none;
 	border-left: 6px solid $sidebar-color;
@@ -81,18 +84,28 @@ body{
 	text-align: left;
 	width: 100%;
 	vertical-align: middle;
-}
-.sidebar{
-	background-color:$sidebar-color;
-	color: $sidebar-font-color;
-	height: 100%;
-	position: fixed;
-	top:60px;
-	width: 16.6%;
-	@include sm {
-		display: none;
+	}
+	.icon-sidebar{
+		float: left;
+		margin:10px;
+		z-index: 1;
+	}
+	.manager-photo{
+		border-radius:50%;
+		display: inline;
+		height: 40px;
+		width: 40px;
 	}
 }
+
+.sidebar-sm{
+	position: absolute;
+	display: block;
+	width: 100%;
+	min-height: 100%;
+}
+	
+	
 
 /*NAVBAR*/
 header{
@@ -110,6 +123,7 @@ header{
 	}
 
 	@include sm {
+		background-color:$sidebar-color;
 		.navbar-xl{
 			display:none;
 		}
@@ -140,7 +154,10 @@ header{
 .dropdown-button{
 	background-color:inherit;
 	border:none;
-	color: inherit;
+	height: 20px;
+	margin:15px 50px 15px 0;
+	padding: 10px;
+	width: 20px;
 }
 .icon-header{
 	display: inline;
@@ -176,6 +193,10 @@ header{
 	margin:10px;
 	text-align: center;
 }
+
+
+
+
 
 /*STATISTIC*/
 .button-icon{

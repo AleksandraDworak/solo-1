@@ -1,9 +1,10 @@
-function myFunction() {
-  var x = document.getElementById("sidebar");
-  if (x.className === "sidebar") {
-    x.className += "-sm";
-  } else {
-    x.className = "sidebar";
-  }
+
+
+function toggleMenu(visible) {
+  document.querySelector(".sidebar").classList.toggle("show", visible)
 }
 
+document.querySelector(".dropdown-button").addEventListener("click", function(e) {
+  e.preventDefault();
+  toggleMenu();
+});

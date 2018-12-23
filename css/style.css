@@ -699,11 +699,10 @@ body {
   background-color: #ffffff;
   box-shadow: 2px 5px 8px #888888;
   margin: auto;
-  padding: 15px 15px 20px 15px;
   position: relative;
   top: 85px;
   width: 95%;
-  z-index: -1; }
+  z-index: 1; }
   @media (max-width: 767px) {
     .container {
       width: 100%; } }
@@ -721,7 +720,8 @@ body {
 
 .hr {
   border-bottom: 1px #E3E3E3 solid;
-  width: 100%; }
+  width: 100%;
+  z-index: 1; }
 
 .row {
   display: -ms-flexbox;
@@ -737,14 +737,64 @@ body {
   .sidebar {
     display: none; } }
 
-.sidebar, .sidebar-sm {
+@media (min-width: 1024px) {
+  .sidebar-sm {
+    display: none; } }
+
+@media (min-width: 992px) and (max-width: 1023px) {
+  .sidebar-sm {
+    display: none; } }
+
+@media (min-width: 767px) and (max-width: 991px) {
+  .sidebar-sm {
+    display: none; } }
+
+.sidebar {
   background-color: #191919;
   color: #979797;
   height: 100%;
   position: fixed;
   top: 60px;
   width: 16.6%; }
-  .sidebar .nav-button, .sidebar-sm .nav-button {
+  .sidebar .sidebar-button {
+    background-color: #191919;
+    border: none;
+    border-left: 6px solid #191919;
+    color: inherit;
+    height: 40px;
+    line-height: 35px;
+    text-align: left;
+    width: 100%;
+    vertical-align: middle;
+    font-size: 12px; }
+  .sidebar .icon-sidebar {
+    float: left;
+    margin: 10px; }
+  .sidebar h4 {
+    display: block; }
+  .sidebar .manager-panel {
+    display: -ms-flexbox;
+    display: flex;
+    -ms-flex-pack: distribute;
+        justify-content: space-around;
+    -ms-flex-align: center;
+        align-items: center;
+    height: 60px; }
+  .sidebar .manager-photo {
+    border-radius: 50%;
+    display: inline;
+    height: 40px;
+    width: 40px; }
+
+.show {
+  display: inline;
+  width: 100%;
+  min-height: 100%;
+  background-color: #191919;
+  color: #979797;
+  z-index: 3;
+  top: 40px; }
+  .show .sidebar-button {
     background-color: #191919;
     border: none;
     border-left: 6px solid #191919;
@@ -754,41 +804,51 @@ body {
     text-align: left;
     width: 100%;
     vertical-align: middle; }
-  .sidebar .icon-sidebar, .sidebar-sm .icon-sidebar {
+  .show .icon-sidebar {
     float: left;
-    margin: 10px;
-    z-index: 1; }
-  .sidebar .manager-photo, .sidebar-sm .manager-photo {
+    margin: 10px; }
+  .show h4 {
+    display: block; }
+  .show .manager-panel {
+    display: -ms-flexbox;
+    display: flex;
+    -ms-flex-pack: distribute;
+        justify-content: space-around;
+    -ms-flex-align: center;
+        align-items: center; }
+  .show .manager-photo {
     border-radius: 50%;
     display: inline;
     height: 40px;
     width: 40px; }
 
-.sidebar-sm {
-  position: absolute;
-  display: block;
-  width: 100%;
-  min-height: 100%; }
-
 /*NAVBAR*/
 header {
   background-color: #ffffff;
   height: 60px;
-  margin-bottom: 2%;
-  max-width: 1400px;
+  margin: 0 0 2% auto;
   position: fixed;
   text-align: right;
-  width: 100%; }
-  header .nav {
+  width: 100%;
+  z-index: 2; }
+  header .header-logo {
     display: inline;
     line-height: 45px;
-    text-align: center; }
+    text-align: center;
+    height: 100%;
+    width: 16.64%; }
   @media (max-width: 767px) {
     header {
       background-color: #191919; }
-      header .navbar-xl {
+      header .header-xl {
         display: none; } }
   @media (min-width: 1024px) {
+    header .dropdown-button {
+      visibility: hidden; } }
+  @media (min-width: 992px) and (max-width: 1023px) {
+    header .dropdown-button {
+      visibility: hidden; } }
+  @media (min-width: 767px) and (max-width: 991px) {
     header .dropdown-button {
       visibility: hidden; } }
 
@@ -829,20 +889,13 @@ header {
   max-width: 100px;
   max-height: 30px; }
 
-.nav {
+.header-logo {
   background-color: #191919;
   float: left;
   height: 60px;
-  min-width: 16.6%; }
+  width: 16.6%; }
 
-.nav-button:hover {
-  border-left: 6px solid #FFA200;
-  background-color: #282828;
-  color: #f5f5f2; }
-  .nav-button:hover .icon-sidebar {
-    fill: #f5f5f2; }
-
-.wallet-status {
+.header-wallet-status {
   display: inline;
   font-weight: bold;
   font-size: 18px;
@@ -850,18 +903,95 @@ header {
   margin: 10px;
   text-align: center; }
 
+.sidebar-button:hover {
+  border-left: 6px solid #FFA200;
+  background-color: #282828;
+  color: #f5f5f2; }
+  .sidebar-button:hover .icon-sidebar {
+    fill: #f5f5f2; }
+
 /*STATISTIC*/
 .button-icon {
   fill: #ffffff; }
 
+.calendar {
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-align: center;
+      align-items: center;
+  -ms-flex-pack: center;
+      justify-content: center; }
+
+.chart {
+  width: 60%;
+  margin: auto; }
+
+.chart-legend {
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-pack: center;
+      justify-content: center;
+  height: 40px;
+  -ms-flex-align: center;
+      align-items: center;
+  width: 60%;
+  margin: auto; }
+
+.chart-wrapper {
+  background-color: #F3F3F1;
+  width: 120px;
+  height: 40px;
+  margin-left: 50px;
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-align: center;
+      align-items: center;
+  -ms-flex-pack: center;
+      justify-content: center; }
+
+.chart-wrapper:hover {
+  background-color: #ffffff; }
+
+.date {
+  padding: 5px;
+  margin: 0;
+  border: none; }
+
+#date-2 {
+  border-left: 1px #E3E3E3 solid; }
+
+.icon {
+  display: inline;
+  fill: #9c9c9c;
+  height: 15px;
+  width: 15px; }
+
 .date-inputs {
-  text-align: center; }
+  text-align: center;
+  padding: 10px;
+  border: 1px #E3E3E3 solid;
+  display: inline; }
   @media (max-width: 767px) {
     .date-inputs input {
       display: block;
       margin: 20px auto; } }
 
+.point {
+  width: 15px;
+  height: 15px;
+  border-radius: 50%; }
+
+.earned {
+  background-color: #59B66D; }
+
+.ftd {
+  background-color: #FF9A38; }
+
+.signups {
+  background-color: #80BFCA; }
+
 .statistic .statistic-table {
+  border-spacing: 0;
   margin: 50px auto;
   width: 60%; }
   .statistic .statistic-table th, .statistic .statistic-table td {
@@ -872,7 +1002,8 @@ header {
     width: 50px; }
 
 .statistic img {
-  max-width: 60%;
+  display: block;
+  max-width: 100%;
   margin: auto; }
   @media (max-width: 767px) {
     .statistic img {
@@ -886,6 +1017,7 @@ header {
   width: 120px; }
 
 .links-table {
+  border-spacing: 0;
   margin: auto; }
   .links-table p {
     font-weight: bold; }

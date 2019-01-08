@@ -4,6 +4,7 @@
 @import "layout";
 @import "styleguide";
 
+
 /*GENERAL*/
 * {
   box-sizing: border-box;
@@ -12,6 +13,8 @@
 body{
 	background-color: $main-background-color;
 }
+
+
 .button-section{
 	background-color: $button-color;
 	border-radius:2px;
@@ -23,13 +26,33 @@ body{
 .button-section:hover{
 	background-color:$button-hover-color;
 }
+.button-cancel{
+	background-color: $sidebar-font-color;
+	border-radius:2px;
+	border:none;
+	color:#ffffff;
+	margin:20px;
+	padding:10px;
+}
+.button-cancel:hover{
+	background-color:#BABABA;
+}
+
+
+
+
+
+
 .container {
 	background-color:$section-background-color;
 	box-shadow: 2px 5px 8px #888888;
- 	margin: auto;	
+ 	margin: auto auto 30px;
+ 	
+ 		
+ 	padding-bottom:30px;
 	position:relative;
 	top:85px;
-	width: 95%;
+	width: 90%;
  	z-index: 1;
  		
 	@include sm{
@@ -60,6 +83,79 @@ body{
 	border-bottom-color: #333333;
 }
 
+/*MODALS*/
+
+
+.overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 999;
+
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0,0,0,0.5);
+
+  justify-content: center;
+  align-items: center;
+
+  overflow: auto;
+  padding: 30px;
+
+  display: none;
+}
+
+.overlay.showm {
+  display: flex;
+}
+
+.modalLogin, .modalMsg {
+  max-width: 600px;
+  margin: auto;
+  background-color: #ffffff;
+  position: relative;
+  padding: 30px;
+  display: none;
+}
+
+
+.modalLogout{
+	max-width: 600px;
+	min-width: 400px;
+	min-height: 150px;
+	margin: auto;
+	background-color: #ffffff;
+	position: relative;
+	padding: 0;
+	display: none;
+	p{
+		padding:30px;
+		line-height: 60px;
+		font-weight: bold;
+	}
+
+	.modal-buttons{
+		display: flex;
+		justify-content: flex-end;
+	}
+}
+
+.modalLogout.showm, .modalLogin.showm, .modalMsg.showm {
+  display: block;
+}
+
+.btn-close {
+  position: absolute;
+  top: 0;
+  right: 0;
+  padding: 5px 10px;
+}
+
+
+
+
+
+
 /*SIDEBAR*/
 .sidebar{
 @include sm {
@@ -89,9 +185,10 @@ body{
 	background-color:$sidebar-color;
 	color: $sidebar-font-color;
 	height: 100%;
+	width: 100%;
 	position: fixed;
 	top:60px;
-	width: 16.6%;
+	
 	
 	.sidebar-button{
 	background-color:$sidebar-color;
@@ -131,13 +228,14 @@ body{
 .show{
 	
 	display: inline;
-	width: 100%;
+	min-width: 100%;
 	min-height: 100%;
 	background-color:$sidebar-color;
 	color: $sidebar-font-color;
 	z-index:3;
-	top:40px;
+	top:45px;
 	
+
 	
 	.sidebar-button{
 	background-color:$sidebar-color;
@@ -160,16 +258,17 @@ body{
 		}
 	.manager-panel{
 		display: flex;
-		justify-content:space-around;
-		align-items:center;
-
+		justify-content: flex-start;
 	}
 	.manager-photo{
 		border-radius:50%;
 		display: inline;
 		height: 40px;
 		width: 40px;
+		margin: 0 30px 0 15px;
 	}
+
+
 
 
 }
@@ -189,10 +288,14 @@ header{
 		line-height: 45px;
 		text-align: center;
 		height: 100%;
-		width: 16.64%;
+		width: 16.66%;
 	}
 
-	
+	.header-xl{
+		display: inline-flex;
+		justify-content: center;
+  		align-items: baseline;
+	}
 
 	@include sm {
 		background-color:$sidebar-color;
@@ -202,25 +305,22 @@ header{
 	}
 	@include xl{
 		.dropdown-button{
-			visibility: hidden;
+			display: none;
 		}
 	}
 	@include lg{
 		.dropdown-button{
-			visibility: hidden;
+			display: none;
 		}
 	}
 	@include md{
 		.dropdown-button{
-			visibility: hidden;
+			display: none;
 		}
 	}
 
 }
-.arrow-down{
-	height: 15px;
-	width: 15px;
-}
+
 .button-header{
   background-color: $section-background-color;
   border:none;
@@ -237,13 +337,13 @@ header{
 .dropdown-button{
 	background-color:inherit;
 	border:none;
-	height: 20px;
+	height: 30px;
 	margin:15px 50px 15px 0;
-	padding: 10px;
-	width: 20px;
+	padding: 5px;
+	width: 30px;
 }
 .icon-header{
-	display: inline;
+	
 	fill:$text-color;
 	height: 20px;
 	width: 20px;
@@ -258,16 +358,16 @@ header{
 	background-color:$sidebar-color;
 	float: left;
 	height: 60px;
-	width: 16.6%;
+	width: 16.66%;
 }
 
 .header-wallet-status{
-	display: inline;
+	display: inline-flex;
 	font-weight: bold;
 	font-size: 18px;
-	line-height: 40px;
+	line-height: 20px;
 	margin:10px;
-	text-align: center;
+	
 }
 
 .sidebar-button:hover{
@@ -278,6 +378,7 @@ header{
 		fill:$sidebar-text-hover-color;
 	}
 }
+
 
 
 
@@ -294,6 +395,9 @@ header{
 
 .chart{
 	width: 60%;
+	@include sm{
+		width: 100%;
+	}
 	margin: auto;
 }
 .chart-legend{
@@ -328,6 +432,13 @@ header{
 
 #date-2{
 	border-left: 1px $text-color-light solid;
+	@include sm{
+		border-top: 1px $text-color-light solid;
+		border-bottom: 1px $text-color-light solid;
+		border-left: none;
+
+
+	}
 }
 
 .icon{
@@ -342,10 +453,14 @@ header{
 	padding: 10px;
 	border:1px $text-color-light solid;
 	display: inline;
+	margin:10px;
 	@include sm{
+		padding-top:0;
 		input{
 		display: block;
-		margin:20px auto;
+		margin:0 auto 5px;
+
+
 		}	
 	}
 }
@@ -369,11 +484,17 @@ header{
 	}
 
 
-.statistic{
+.statistics{
+
 	.statistic-table{
 		border-spacing: 0;
 		margin:50px auto;
 		width: 60%;
+		@include sm {
+			width: 100%;
+		}
+		
+		}
 		th, td {  
 	  		border-bottom: 1px solid #ddd;
 	  		height: 50px;
@@ -382,14 +503,11 @@ header{
 			border-bottom:none;
 			width: 50px;
 		}
-	}
+	
 	img{
 		display: block;
-		max-width: 100%;
+		width: 100%;
 		margin:auto;
-		@include sm {
-			width: 100%;
-		}
 	}
 }
 
@@ -407,16 +525,11 @@ header{
 		font-weight: bold;
 	}
 	@include xl{
+
 		width: 60%;
 		.table-icon{
 			visibility: hidden;
 		}
-	}
-	@include lg {
-		width: 80%;
-	}
-	@include md{
-		width: 80%;
 	}
 	@include sm{
 		width: 100%;
@@ -461,4 +574,16 @@ header{
 			}
 		}
 	}
+
 }
+.active-page{
+	border-left:6px solid $button-hover-color;
+	.sidebar-button{
+		border-left: 6px solid $sidebar-hover-color;
+		background-color:$sidebar-hover-color;
+		color:$sidebar-text-hover-color;
+	}
+	.icon-sidebar{
+		fill:$sidebar-text-hover-color;}
+}
+

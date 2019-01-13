@@ -10,34 +10,6 @@ document.querySelector(".dropdown-button").addEventListener("click", function(e)
 });
 
 
-
-
-
-
-function closeModal() {
-  document.getElementById('overlay').classList.remove('show-modal')
-  document.getElementById('overlay').classList.remove('show-modalLogout')
-}
-document.querySelectorAll('#overlay .js--close-modal').forEach(function(btn) {
-  btn.addEventListener('click', function(e) {
-    e.preventDefault()
-    closeModal()
-    closeModalLogout()
-  })
-})
-document.querySelector('#overlay').addEventListener('click', function(e) {
-  if(e.target === this) {
-    closeModal()
-    closeModalLogout()
-  }
-})
-document.addEventListener('keyup', function(e) {
-  if(e.keyCode === 27) {
-    closeModal()
-    closeModalLogout()
-  }
-})
-
 function closeModal() {
   document.getElementById('overlay').classList.remove('showm')
 }
@@ -49,8 +21,7 @@ document.querySelectorAll('#overlay .js--close-modal').forEach(function(btn) {
 })
 
 document.querySelector('#overlay').addEventListener('click', function(e) {
-  if(e.target === this) {
-    closeModal()
+   {closeModal()
   }
 })
 document.addEventListener('keyup', function(e) {
@@ -59,40 +30,34 @@ document.addEventListener('keyup', function(e) {
   }
 })
 
-function openModalLogout(modal) {
-  document.querySelectorAll('#overlay > *').forEach(function(modal) {
-    
-    modalLogin.classList.remove('showm')
-    modalMsg.classList.remove('showm')
-    modalLogout.classList.remove('showm')
-    
-  })
-  document.querySelector('#overlay').classList.add('showm')
-  document.querySelector('#modalLogout').classList.add('showm')
-}
-function openModalLogin(modal) {
-  document.querySelectorAll('#overlay > *').forEach(function(modal) {
-    
-    modalLogin.classList.remove('showm')
-    modalMsg.classList.remove('showm')
-    modalLogout.classList.remove('showm')
-    
-  })
-  document.querySelector('#overlay').classList.add('showm')
-  document.querySelector('#modalLogin').classList.add('showm')
+function remove() {
+  var x, i;
+  x = document.getElementsByClassName('mod');
+  for (i = 0; i < x.length; i++) {
+  x[i].style.display='none';
+  }
+} 
+ function openModal(modal){ 
+  remove();
+  var c = '' + modal.id;
+  document.querySelector('#overlay').classList.add('showm');
+  modal.style.display="block";
+  document.getElementById(c).classList.add('showm');  
 }
 
-function openModalMsg(modal) {
-  document.querySelectorAll('#overlay > *').forEach(function(modal) {
-    
-    modalLogin.classList.remove('showm')
-    modalMsg.classList.remove('showm')
-    modalLogout.classList.remove('showm')
-    
-  })
-  document.querySelector('#overlay').classList.add('showm')
-  document.querySelector('#modalMsg').classList.add('showm')
-}
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 var ctx = document.getElementById('chart').getContext('2d');
